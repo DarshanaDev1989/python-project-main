@@ -1,6 +1,8 @@
 import csv
 import tkinter as tk
 from tkinter import messagebox, simpledialog
+from PIL import Image, ImageTk
+
 
 path = "chicken.csv"
 
@@ -85,7 +87,12 @@ def main():
     win.title("Chicken Registry App")
     win.geometry('400x200')
     win.resizable(False,False)
-
+     # Load the image
+    image = Image.open("chicken.jpeg")
+    image = image.resize((150, 150))  # Resize the image to fit the label
+    photo = ImageTk.PhotoImage(image)
+    label = tk.Label(win, image=photo)
+    label.pack(side=tk.LEFT)
     btn_view = tk.Button(win, text="View Chicken Names", fg="blue", command=view_chickens)
     btn_view.pack(pady=10)
 
