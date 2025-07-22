@@ -50,7 +50,7 @@ def add_chicken():
 def update_chicken():
     chicken=load()
     name = simpledialog.askstring("Input", "Enter chicken name to be updated:")
-    if name:
+    if name in chicken:
         index=chicken.index(name)
         up_name=simpledialog.askstring("Input", "Enter new chicken name to be updated:")
         chicken[index]=up_name
