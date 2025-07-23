@@ -65,7 +65,15 @@ def delete(chickens):
         print("Chicken not found")
     else:
         chickens.remove(name)
-        print("Chicken deleted successfully!")
+        try:
+            with open(path, 'w', newline='') as file:
+                writer = csv.writer(file)
+                writer.writerow(["name"])  
+                for i in chickens:
+                    writer.writerow([i])
+        except Exception as e:
+            print("An error occurred while updating:", e)
+        print("Chicken  successfully!")
 def main():
     chickens=load()
     print(chickens)

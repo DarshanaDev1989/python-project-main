@@ -50,7 +50,7 @@ def add_chicken():
 def update_chicken():
     chicken=load()
     name = simpledialog.askstring("Input", "Enter chicken name to be updated:")
-    if name:
+    if name in chicken:
         index=chicken.index(name)
         up_name=simpledialog.askstring("Input", "Enter new chicken name to be updated:")
         chicken[index]=up_name
@@ -64,7 +64,7 @@ def update_chicken():
             print("An error occurred while updating:", e)
         messagebox.showinfo("Success", f"{up_name} updated successfully!")
     else:
-         messagebox.showinfo("Not Found", f"'{name}' was not found in the list.")
+        messagebox.showinfo("Not Found", f"'{name}' was not found in the list.")
 def delete_chicken():
     chicken=load()
     name = simpledialog.askstring("Input", "Enter chicken name to be deleted:")
@@ -85,8 +85,11 @@ def delete_chicken():
 def main():
     win = tk.Tk()
     win.title("Chicken Registry App")
-    win.geometry('400x200')
+    win.geometry('400x250')
     win.resizable(False,False)
+    win.configure(bg='lightblue')
+    label = tk.Label(win, text="Chicken Registry App", font=("Arial", 16, "bold"), fg="blue", bg="lightblue")
+    label.pack(pady=10)
      # Load the image
     image = Image.open("chicken.jpeg")
     image = image.resize((150, 150))  # Resize the image to fit the label
